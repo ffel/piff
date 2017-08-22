@@ -148,4 +148,6 @@ options:
 
     Also in this case, you have to make the file executable.
 
-
+Additionally the Python code makes use of
+[`pandocfilters`](http://pandoc.org/scripting.html#but-i-dont-want-to-learn-haskell)
+which can be installed as `pip install pandocfilters`.
