@@ -31,13 +31,13 @@ main()
 }
 ```
 
-Additionaly, consider the following piece of a blog about this awsome
+Additionaly, consider the following piece of a blog about this awesome
 code (stored in `blog.txt`):
 
     Hello World
     ===========
 
-    Today, we'll discuss the following piece of awsome code:
+    Today, we'll discuss the following piece of awesome code:
 
     ```{.c include="code.c"}
     ```
@@ -51,7 +51,7 @@ This changes `blog.txt` into
     Hello World
     ===========
 
-    Today, we'll discuss the following piece of awsome code:
+    Today, we'll discuss the following piece of awesome code:
 
     ``` {.c include="code.c"}
     /* Hello World Program */
