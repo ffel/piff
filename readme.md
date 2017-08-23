@@ -123,6 +123,17 @@ This results in
         /* print hello world */
     ```
 
+Temporarily Remove Code
+-----------------------
+
+Filter `clear_code.py` removes the code from the input file. Code is
+only removed in case "include" is given and its value is the name of a
+file.
+
+    $ pandoc blog.txt --filter ./clear_code.py -o blog.txt
+
+Later on, code can be added again with `include_file.py`.
+
 Future plans
 ------------
 
