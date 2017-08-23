@@ -16,7 +16,7 @@ that can be used to add chunks of source code into text files.
 Example
 -------
 
-As an example, consider the following piece of code in file `hello.c`:
+As an example, consider the following piece of code in file `code.c`:
 
 ``` {.c include="code.c"}
 /* Hello World Program */
