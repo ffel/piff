@@ -34,7 +34,7 @@ def insertfile(key, value, fmt, meta):
                     lines = contents.splitlines(True)
                 except git.exc.GitCommandError:
                     eprint("cannot include file:", "git tag error", kv["git"], "for file:", kv["include"])
-                    return
+                    return None
             elif os.path.isfile(kv["include"]):
                 lines = [line for line in open(kv["include"])]
             else:
