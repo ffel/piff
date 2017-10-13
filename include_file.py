@@ -28,18 +28,18 @@ def insertfile(key, value, fmt, meta):
             if "git" in kv:
                 repo = git.Repo(os.path.abspath(kv["include"]),
                     search_parent_directories=True)
-                contents = repo.git.show(
-                    ":./".join([kv["git"], kv["include"]]))
-                # contents is nu een verzameling karakters
-                # https://docs.python.org/2/library/stdtypes.html#str.splitlines
-                lines = contents.splitlines(True)
-                eprint("lines in git file", len(lines))
+                try:
+                    contents = repo.git.show(
+                        ":./".join([kv["git"], kv["include"]]))
+                    lines = contents.splitlines(True)
+                except git.exc.GitCommandError:
+                    eprint("cannot include file:", "git tag error", kv["git"], "for file:", kv["include"])
+                    return
             elif os.path.isfile(kv["include"]):
                 lines = [line for line in open(kv["include"])]
             else:
-                eprint("cannot include ", kv["include"])
+                eprint("cannot include file:", "file not found:", kv["include"])
                 return None
-            # https://stackoverflow.com/q/3277503
             start = 0
             stop = len(lines)
             if "start" in kv:
