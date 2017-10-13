@@ -28,9 +28,12 @@ def insertfile(key, value, fmt, meta):
             if "git" in kv:
                 repo = git.Repo(os.path.abspath(kv["include"]),
                     search_parent_directories=True)
+                gitpath = repo.working_tree_dir
+                filepath = os.path.abspath(kv["include"])
+                relpath = os.path.relpath(filepath, gitpath)
                 try:
                     contents = repo.git.show(
-                        ":./".join([kv["git"], kv["include"]]))
+                        ":".join([kv["git"], relpath]))
                     lines = contents.splitlines(True)
                 except git.exc.GitCommandError:
                     eprint("cannot include file:", "git tag error", kv["git"], "for file:", kv["include"])
