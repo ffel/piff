@@ -12,6 +12,7 @@ from __future__ import print_function
 import sys
 import os.path
 import re
+import git
 
 # print all debug info to stderr
 def eprint(*args, **kwargs):
@@ -23,9 +24,25 @@ def insertfile(key, value, fmt, meta):
     if key == 'CodeBlock':
         [[ident, classes, kvs], code] = value
         kv = {key: value for key, value in kvs}
-        if "include" in kv and os.path.isfile(kv["include"]):
-            # https://stackoverflow.com/q/3277503
-            lines = [line for line in open(kv["include"])]
+        if "include" in kv:
+            if "git" in kv:
+                repo = git.Repo(os.path.abspath(kv["include"]),
+                    search_parent_directories=True)
+                gitpath = repo.working_tree_dir
+                filepath = os.path.abspath(kv["include"])
+                relpath = os.path.relpath(filepath, gitpath)
+                try:
+                    contents = repo.git.show(
+                        ":".join([kv["git"], relpath]))
+                    lines = contents.splitlines(True)
+                except git.exc.GitCommandError:
+                    eprint("cannot include file:", "git tag error", kv["git"], "for file:", kv["include"])
+                    return None
+            elif os.path.isfile(kv["include"]):
+                lines = [line for line in open(kv["include"])]
+            else:
+                eprint("cannot include file:", "file not found:", kv["include"])
+                return None
             start = 0
             stop = len(lines)
             if "start" in kv:
