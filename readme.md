@@ -123,6 +123,18 @@ This results in
         /* print hello world */
     ```
 
+Including checked-in Code
+-------------------------
+
+One can use the `git` option to define the git version of the code
+to include:
+
+    ```{.c include="code.c" git="a23ed32"}
+    ```
+
+[GitPython](http://gitpython.readthedocs.io/en/stable/index.html) is used
+to obtain the requester version from the git repository.
+
 Temporarily Remove Code
 -----------------------
 
@@ -141,10 +153,6 @@ Future plans
 
     This is already partially implementen but I am not satisfied yet.
 
--   Support for git refs.
-
-    This makes it possible to refer to previous versions of files.
-
 Install
 -------
 
@@ -162,3 +170,6 @@ options:
 Additionally the Python code makes use of
 [`pandocfilters`](http://pandoc.org/scripting.html#but-i-dont-want-to-learn-haskell)
 which can be installed as `pip install pandocfilters`.
+
+Furthermore [GitPython](http://gitpython.readthedocs.io/en/stable/index.html) is
+used to support the `git` tag.
