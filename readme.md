@@ -135,13 +135,6 @@ file.
 
 Later on, code can be added again with `include_file.py`.
 
-Future plans
-------------
-
--   Support to select pieces of indented code.
-
-    This is already partially implementen but I am not satisfied yet.
-
 Install
 -------
 
