@@ -72,13 +72,13 @@ included.
 Better Control
 --------------
 
-It is possible to select a part of the file by means of `start` and `stop`.
-These represent line numbers:
+It is possible to select a part of the file by means of `start` and
+`stop`. These represent line numbers:
 
     ``` {.c include="code.c" start="5" stop="11"}
     ```
 
-It is also  possible to select a number of lines:
+It is also possible to select a number of lines:
 
     ``` {.c include="code.c" start="5" lines="6"}
     ```
@@ -93,7 +93,6 @@ After pandoc did its job, this gives us
         printf("Hello World");
     }
     ```
-
 
 Besides number of lines, it is also possible to state the number of
 "paragraphs", which is the number of white space delineated lines.
@@ -137,14 +136,14 @@ This results in
 Including checked-in Code
 -------------------------
 
-One can use the `git` option to define the git version of the code
-to include:
+One can use the `git` option to define the git version of the code to
+include:
 
     ```{.c include="code.c" git="a23ed32"}
     ```
 
-[GitPython](http://gitpython.readthedocs.io/en/stable/index.html) is used
-to obtain the requester version from the git repository.
+[GitPython](http://gitpython.readthedocs.io/en/stable/index.html) is
+used to obtain the requester version from the git repository.
 
 Temporarily Remove Code
 -----------------------
@@ -182,5 +181,6 @@ Additionally the Python code makes use of
 [`pandocfilters`](http://pandoc.org/scripting.html#but-i-dont-want-to-learn-haskell)
 which can be installed as `pip install pandocfilters`.
 
-Furthermore [GitPython](http://gitpython.readthedocs.io/en/stable/index.html) is
+Furthermore
+[GitPython](http://gitpython.readthedocs.io/en/stable/index.html) is
 used to support the `git` tag.
