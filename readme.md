@@ -72,9 +72,15 @@ included.
 Better Control
 --------------
 
-It is possible to select a number of lines:
+It is possible to select a part of the file by means of `start` and `stop`.
+These represent line numbers:
 
-    ```{.c include="code.c" start="5" lines="6"}
+    ``` {.c include="code.c" start="5" stop="11"}
+    ```
+
+It is also  possible to select a number of lines:
+
+    ``` {.c include="code.c" start="5" lines="6"}
     ```
 
 After pandoc did its job, this gives us
@@ -87,6 +93,7 @@ After pandoc did its job, this gives us
         printf("Hello World");
     }
     ```
+
 
 Besides number of lines, it is also possible to state the number of
 "paragraphs", which is the number of white space delineated lines.
@@ -107,6 +114,8 @@ Pandoc gives us
     }
     ```
 
+> `pars` is a *deprecated feature*.
+
 Instead of starting with line number `start` it is possible to use a
 [regular expression](https://docs.python.org/2/library/re.html):
 
@@ -122,6 +131,8 @@ This results in
     {
         /* print hello world */
     ```
+
+> `match` is a *deprecated feature*.
 
 Including checked-in Code
 -------------------------
