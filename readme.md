@@ -69,8 +69,8 @@ This changes `blog.txt` into
 In case `code.c` changes and `pandoc` runs again, updated code will be
 included.
 
-Better Control
---------------
+Include part of a file
+----------------------
 
 It is possible to select a part of the file by means of `start` and
 `stop`. These represent line numbers:
@@ -99,6 +99,18 @@ After pandoc did its job, this gives us
 > features. These options were intended to deal with code that might
 > change in future. However, the `git` option is a much better way to
 > guarantee that the intended code is included.
+
+Dedent code
+-----------
+
+In case the selected code shares a common amount of indentation (for
+example a function body without the enclosing braces), it is possible to
+remove the indetation with the `dedent` option:
+
+    ``` {.c include="code.c" start="7" stop="9" dedent="y"}
+    ```
+
+The resulting code is left aligned.
 
 Including checked-in Code
 -------------------------

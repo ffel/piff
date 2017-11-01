@@ -13,6 +13,7 @@ import sys
 import os.path
 import re
 import git
+from textwrap import dedent
 
 # print all debug info to stderr
 def eprint(*args, **kwargs):
@@ -74,24 +75,12 @@ def insertfile(key, value, fmt, meta):
                         between_pars = False
             if "stop" in kv:
                 stop = int(kv["stop"])
-            if "indent" in kv:
-                nr_indents = int(kv["indent"])
-                pre = leading(lines[start])
-                for l in range(start+1, stop):
-                    if not lines[l].isspace():
-                        if pre == leading(lines[l]):
-                            nr_indents -= 1
-                            if nr_indents <= 0:
-                                stop = l+1 # include that last line as well
-                                break
+            # now select lines
             data = "".join(lines[start:stop])
+            if "dedent" in kv and kv["dedent"]=="y":
+                data = dedent(data)
             return CodeBlock([ident, classes, kvs], data)
     return None
-
-# find white space leading in s
-def leading(s):
-    m = re.search(r"^(\s*)", s)
-    return m.group(0)
 
 if __name__ == "__main__":
     toJSONFilter(insertfile)
