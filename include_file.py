@@ -48,6 +48,7 @@ def insertfile(key, value, fmt, meta):
             if "start" in kv:
                 start = int(kv["start"]) - 1
             if "match" in kv:
+                eprint("use of *match* is deprecated, use *start* instead")
                 patt = re.compile(kv["match"])
                 for l in range(start, stop):
                     if patt.search(lines[l]):
@@ -58,6 +59,7 @@ def insertfile(key, value, fmt, meta):
                 if nr_lines >= 0 and start+nr_lines < stop:
                     stop = start+nr_lines
             if "pars" in kv:
+                eprint("use of *pars* is deprecated, use *stop* or *lines* instead")
                 nr_pars = int(kv["pars"])
                 between_pars = False
                 for l in range(start, stop):

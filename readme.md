@@ -94,44 +94,11 @@ After pandoc did its job, this gives us
     }
     ```
 
-Besides number of lines, it is also possible to state the number of
-"paragraphs", which is the number of white space delineated lines.
-
-For `code.c`, this is a bit silly, but it works:
-
-    ```{.c include="code.c" start="5" pars="2"}
-    ```
-
-Pandoc gives us
-
-    ``` {.c include="code.c" start="5" pars="2"}
-    main()
-    {
-        /* print hello world */
-
-        printf("Hello World");
-    }
-    ```
-
-> `pars` is a *deprecated feature*.
-
-Instead of starting with line number `start` it is possible to use a
-[regular expression](https://docs.python.org/2/library/re.html):
-
-    ```{.c include="code.c" match="include" pars="2"}
-    ```
-
-This results in
-
-    ``` {.c include="code.c" match="include" pars="2"}
-    #include<stdio.h>
-
-    main()
-    {
-        /* print hello world */
-    ```
-
-> `match` is a *deprecated feature*.
+> The options `pars` (for number of paragraphs) and `match` (for pattern
+> matching) are included in the source. These are, however, deprecated
+> features. These options were intended to deal with code that might
+> change in future. However, the `git` option is a much better way to
+> guarantee that the intended code is included.
 
 Including checked-in Code
 -------------------------
