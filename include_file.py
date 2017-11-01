@@ -70,6 +70,8 @@ def insertfile(key, value, fmt, meta):
                                 break
                     else:
                         between_pars = False
+            if "stop" in kv:
+                stop = int(kv["stop"])
             if "indent" in kv:
                 nr_indents = int(kv["indent"])
                 pre = leading(lines[start])
