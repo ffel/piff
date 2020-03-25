@@ -138,6 +138,12 @@ Later on, code can be added again with `include_file.py`.
 Install
 -------
 
+The code depends on `pandocfilters` and `gitpython`, install these with
+
+-   `pip install --user pandocfilters`
+
+-   `pip install --user gitpython`
+
 Assuming you have [pandoc](http://pandoc.org/) and [python
 2](https://www.python.org/) installed, I suggest you the following
 options:
