@@ -122,7 +122,7 @@ include:
     ```
 
 [GitPython](http://gitpython.readthedocs.io/en/stable/index.html) is
-used to obtain the requester version from the git repository.
+used to obtain the requested version from the git repository.
 
 Temporarily Remove Code
 -----------------------
